@@ -6,116 +6,114 @@
 
 #include <stdlib.h>
 
- 
-
 using namespace std;
 
 //Initializing three global 2D array
 
-int MultiArray[8][8];
-int MultiArray1[32][32];
-int MultiArray2[128][128];
+int MultiArray[8][8]; int MultiArray1[32][32]; int MultiArray2[128][128];
 
-//First function using a 2D array of size [8][8]
+//linearIndex function using a 2D array of size [8][8]
 
 int linearIndex(){
 
-    int X[20]; //Initializing a 1D array that will recieve elements from our 2D array.
+int X[20]; //Initializing a 1D array that will recieve elements from our 2D array.
 
-    int s=-1; //Initializing the index of my 1D array
+int s=-1; //Initializing the index of my 1D array
 
-    int array[8][8],i,j; // Initializing  a local 2D array
+int array[8][8],i,j; // Initializing  a local 2D array
 
-    for(i=0;i<8;i++){
+cout<< "The  first  20  values  of  the  lower  trinagular  elements  of  A[][]  and  their n\
+respective indices in row-major order: "<< endl;
 
-        for(j=0;j<8;j++){
+cout<< " "<<endl;
 
-             if(i>=j){
+for(i=0;i<8;i++){
 
-            array[i][j]=rand() % 100+1;
+    for(j=0;j<8;j++){
 
-            s++;
+         if(i>=j){ //To make sure we only enter values into the lower trinagular.
 
-            X[s]=array[i][j];
+        array[i][j]=rand() % 100+1; //Randomly generate numbers into the lower trinagular.
 
-            cout <<" " <<"A[" << i<<" ]"<<"["<<j<<"]: "  ;
+        s++;
 
-            cout<<array[i][j] << " ";
+        X[s]=array[i][j];
+        
+//Print the array.
+        cout <<" " <<"A[" << i<<" ]"<<"["<<j<<"]: "  ;
 
-            
+        cout<<array[i][j] << " ";
 
-            MultiArray[i][j]=X[s];
+        
 
-        }  
+        MultiArray[i][j]=X[s];
 
-    }
-
-    
-
-    cout<< endl;
-
-    } 
-
-    cout << "The number of elements is ";
-
-    cout<<s+1 <<endl;
-
- 
-
-    for(int ii=0;ii<20;ii++) {
-
-        cout<<X[ii] << " " ;
-
- 
-
-        cout <<" Is at index: " <<"B [" << ii << " ]" <<endl ;
-
- 
-
-    }   
-
-    cout<< endl;   
+    }  
 
 }
 
- 
+
+
+cout<< endl;
+
+} 
+
+
+cout<<s+1 <<endl;
+
+cout<< "The first 20 elements of B[] and their respective indices: "<<endl;
+cout<< " "<<endl;
+
+for(int ii=0;ii<20;ii++) {
+
+    cout<<X[ii] << " " ;
+
+
+
+    cout <<" Is at index: " <<"B [" << ii << " ]" <<endl ;
+
+
+
+}   
+
+cout<< endl;   
+}
+// inverseIndex function
 
 void inverseIndex(){
+    
+    cout<< "The first 20 elements of C[][] and their respective indices: "<< endl;
+    cout<< " "<<endl;
 
     for(int i=0;i<8;i++){
 
         for(int j=0;j<8;j++){
-
-             if(i>=j){
-
             
+//If statement that makes sure of bringing back the lower triangular elements
+            if(i>=j){
 
-            cout <<MultiArray[i][j] <<" ";
+        
 
-            cout <<" Is at index: " <<"C [" << i<<" ] "<<"["<<j<<"]" <<endl ;
+                cout <<MultiArray[i][j] <<" ";
 
-             }
+                cout <<" Is at index: " <<"C [" << i<<" ] "<<"["<<j<<"]" <<endl ;
 
-        } 
+         }
 
-        cout<< endl; 
+    } 
 
-    }
-
- 
+    cout<< endl; 
 
 }
 
- 
+//The main method that calls the fonction above
+}
 
 int main(){
 
-    linearIndex();
+linearIndex();
 
-    cout<< endl;
+cout<< endl;
 
-    inverseIndex();
-
-    
-
+inverseIndex();
 }
